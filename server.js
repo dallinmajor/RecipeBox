@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const router = require('./routes');
 
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://dallinmajor:Pin4Dallin@ds151382.mlab.com:51382/mytestbd",
+    process.env.MONGODB_URI || "mongodb://dallinmajor:Pin4Dallin@ds059516.mlab.com:59516/recipebook",
     { useNewUrlParser: true }
 );
 
