@@ -1,19 +1,28 @@
 const db = require('../models');
 
 module.exports = {
-    findAll: () => {
-
+    findById: (req, res) => {
+        db.Category
+            .findById(req.params.id)
+            .populate('Recipe')
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(402).json(err))
     },
-    findById: () => {
-
+    create: (req, res) => {
+        db.Category
+            .create(req.body)
+            .then(category => {
+                db.User
+                    .findByIdAndUpdate((req.params.userId),
+                        { $push: { categories: category._id } })
+                    .then(res.json(category));
+            })
+            .catch(err => res.status(402).json(err))
     },
-    create: () => {
-
+    update: (req, res) => {
+        db.Category
     },
-    update: () => {
-
-    },
-    remove: () => {
-        
+    remove: (req, res) => {
+        db.Category
     }
 }
