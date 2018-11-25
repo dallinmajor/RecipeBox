@@ -7,8 +7,11 @@ router.route('/:id')
     .get(CategoryControllers.findById)
     .update(CategoryControllers.update)
 
-router.route('/userId')
+router.route('/:userId')
     .post(CategoryControllers.create)
     .get(CategoryControllers.findAll)
+
+router.route('/delete/:userId/:id')
+    .delete(CategoryControllers.remove);
 
 module.exports = router;
