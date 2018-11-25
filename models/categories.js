@@ -12,6 +12,10 @@ const CategoriesSchema = new Schema({
             ref: 'Recipe'
         }
     ],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     date: {
         type: Date,
         default: Date.now

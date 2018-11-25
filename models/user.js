@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Recipe = require('./recipes');
+const Category = require('./categories');
 
 const UserSchema = new Schema ({
     username: {
@@ -40,6 +42,12 @@ const UserSchema = new Schema ({
         default: Date.now
     }
 });
+
+User.Schema.pre('remove', function(next) {
+    Recipe.remove({user: this._id}).exec();
+    Category.remove({user: this._id}).exec();
+    next();
+})
 
 const User = mongoose.model("User", UserSchema);
 
