@@ -26,7 +26,7 @@ const UserSchema = new Schema ({
     catagories: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Catagorie"
+            ref: "Catagory"
         }
     ],
     recipes: [
