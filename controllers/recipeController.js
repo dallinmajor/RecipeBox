@@ -1,23 +1,42 @@
 const db = require('../models');
 
 module.export = {
-    findAll: () => {
+    findAll: (req, res) => {
         db.User
             .findById(req.params.userId, 'recipes')
             .populate('Recipe')
             .then(recipes => res.json(recipes))
             .catch(err => res.status(402).json(err));
     },
-    findById: () => {
-
+    findById: (req, res) => {
+        db.Recipe
+            .findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(402).json(err));
     },
-    create: () => {
-
+    create: (req, res) => {
+        db.Recipe
+            .create(req.body)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(402).json(err));
     },
-    update: () => {
-
+    update: (req, res) => {
+        db.Recipe
+            .findByIdAndUpdate(req.params.id, req.body)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(402).json(err));
     },
-    remove: () => {
-        
+    remove: (req, res) => {
+        db.Recipe
+            .findByIdAndRemove(req.params.id)
+            .then(dbModel => dbModel.remove())
+            .then(
+                db.Category
+                    .findByIdAndUpdate(req.params.categoryId, {
+                        $pull: { recipes: req.params.id }
+                    })
+                    .then(res.send('Deleted!'))
+            )
+            .catch(err => res.status(402).json(err))
     }
 }

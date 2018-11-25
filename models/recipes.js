@@ -14,10 +14,6 @@ const RecipeSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
     date: {
         type: Date,
         default: Date.now

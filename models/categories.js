@@ -23,6 +23,11 @@ const CategoriesSchema = new Schema({
     }
 });
 
+CategoriesSchema.pre('remove', function(next) {
+    Recipe.remove({category: this._id}).exec();
+    next();
+})
+
 const Category = mongoose.model('Category', CategoriesSchema);
 
 module.exports = Category;
