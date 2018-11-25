@@ -10,6 +10,13 @@ module.exports = {
     findById: (req, res) => {
         db.User
             .findById(req.params.id)
+            .populate({
+                path: 'categories',
+                populate: {
+                    path: 'recipes',
+                    model: 'Recipe'
+                }
+            })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(402).json(err));
     },
@@ -30,6 +37,7 @@ module.exports = {
         db.User
             .findByIdAndRemove(req.params.id)
             .then(dbModel => dbModel.remove())
+            .then(res.send('Deleted!'))
             .catch(err => res.status(402).json(err));
     }
 }

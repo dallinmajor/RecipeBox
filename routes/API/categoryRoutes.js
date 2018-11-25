@@ -3,13 +3,13 @@ const CategoryControllers = require('../../controllers/categoryController');
 
 // ROUTE /api/category...
 
-router.route('/:id')
-    .get(CategoryControllers.findById)
-    .put(CategoryControllers.update);
-
 router.route('/:userId')
     .post(CategoryControllers.create)
     .get(CategoryControllers.findAll)
+
+router.route('/:id')
+    .get(CategoryControllers.findById)
+    .put(CategoryControllers.update);
 
 router.route('/delete/:userId/:id')
     .delete(CategoryControllers.remove);

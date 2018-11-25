@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CategoriesSchema = new Schema({
-    categorie: {
+    category: {
         type: String,
         require: true
     },
@@ -13,6 +13,7 @@ const CategoriesSchema = new Schema({
         }
     ],
     user: {
+        require: true,
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
