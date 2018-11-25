@@ -23,10 +23,10 @@ const UserSchema = new Schema ({
             "Password should be longer."
         ]
     },
-    catagories: [
+    categories: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Catagory"
+            ref: "Category"
         }
     ],
     recipes: [
