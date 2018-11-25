@@ -1,6 +1,6 @@
 const db = require('../models');
 
-module.export = {
+module.exports = {
     findAll: (req, res) => {
         db.User
             .findById(req.params.userId, 'recipes')

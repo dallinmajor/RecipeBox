@@ -3,8 +3,7 @@ const RecipeControllers = require('../../controllers/recipeController');
 
 // ROUTE /api/recipe...
 
-router.route('/categoryId/:userId')
-    .post(RecipeControllers.create)
+
 
 
 
