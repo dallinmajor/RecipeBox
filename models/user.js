@@ -43,7 +43,7 @@ const UserSchema = new Schema ({
     }
 });
 
-User.Schema.pre('remove', function(next) {
+UserSchema.pre('remove', function(next) {
     Recipe.remove({user: this._id}).exec();
     Category.remove({user: this._id}).exec();
     next();

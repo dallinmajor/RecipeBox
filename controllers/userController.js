@@ -28,6 +28,8 @@ module.exports = {
     },
     remove: (req, res) => {
         db.User
-            .findByIdAndRemove
+            .findByIdAndRemove(req.params.id)
+            .then(dbModel => dbModel.remove())
+            .catch(err => res.status(402).json(err));
     }
 }
