@@ -3,7 +3,9 @@ const RecipeControllers = require('../../controllers/recipeController');
 
 // ROUTE /api/recipe...
 
-
+router.route('/:categoryId')
+    .post(RecipeControllers.create)
+    .get(RecipeControllers.findAll)
 
 
 

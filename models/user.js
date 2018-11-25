@@ -44,7 +44,6 @@ const UserSchema = new Schema ({
 });
 
 UserSchema.pre('remove', function(next) {
-    Recipe.remove({user: this._id}).exec();
     Category.remove({user: this._id}).exec();
     next();
 })
