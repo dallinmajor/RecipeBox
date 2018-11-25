@@ -1,6 +1,14 @@
 const db = require('../models');
 
 module.exports = {
+    findAll: (req, res) => {
+        db.User
+            .findById(req.params.userId, 'categories')
+            .populate('categories')
+            .then(categories => res.json(categories))
+            .catch(err = res.status(422).json(err));
+    },
+
     findById: (req, res) => {
         db.Category
             .findById(req.params.id)
