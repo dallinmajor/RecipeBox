@@ -5,7 +5,7 @@ const CategoryControllers = require('../../controllers/categoryController');
 
 router.route('/:id')
     .get(CategoryControllers.findById)
-    .update(CategoryControllers.update)
+    .put(CategoryControllers.update);
 
 router.route('/:userId')
     .post(CategoryControllers.create)
