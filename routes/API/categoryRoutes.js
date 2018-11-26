@@ -3,9 +3,11 @@ const CategoryControllers = require('../../controllers/categoryController');
 
 // ROUTE /api/category...
 
+router.route('/all/:userId')
+    .get(CategoryControllers.findAll)
+
 router.route('/:userId')
     .post(CategoryControllers.create)
-    .get(CategoryControllers.findAll)
 
 router.route('/:id')
     .get(CategoryControllers.findById)

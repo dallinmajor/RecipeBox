@@ -17,7 +17,12 @@ module.exports = {
     create: (req, res) => {
         db.Recipe
             .create(req.body)
-            .then(dbModel => res.json(dbModel))
+            .then(recipe => {
+                db.Category
+                .findByIdAndUpdate(req.params.categoryId, {
+                    $push: { recipes: recipe._id}
+                })
+            })
             .catch(err => res.status(402).json(err));
     },
     update: (req, res) => {

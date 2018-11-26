@@ -11,6 +11,7 @@ const RecipeSchema = new Schema ({
         require: true,
     },
     category: {
+        require: true,
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
