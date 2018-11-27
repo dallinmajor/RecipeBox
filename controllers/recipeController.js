@@ -2,10 +2,9 @@ const db = require('../models');
 
 module.exports = {
     findAll: (req, res) => {
-        db.Category
-            .findById(req.params.userId, 'recipes')
-            .populate('Recipe')
-            .then(recipes => res.json(recipes))
+        db.Recipe
+            .find({user: req.params.userId})
+            .then(data => res.json(data))
             .catch(err => res.status(402).json(err));
     },
     findById: (req, res) => {
@@ -19,7 +18,7 @@ module.exports = {
             .create(req.body)
             .then(recipe => {
                 db.Category
-                .findByIdAndUpdate(req.params.categoryId, {
+                .findByIdAndUpdate(req.params.id, {
                     $push: { recipes: recipe._id}
                 })
                 .then(res.json(recipe));

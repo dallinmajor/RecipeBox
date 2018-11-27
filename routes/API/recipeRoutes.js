@@ -3,9 +3,21 @@ const RecipeControllers = require('../../controllers/recipeController');
 
 // ROUTE /api/recipe...
 
-router.route('/:categoryId')
-    .post(RecipeControllers.create)
+router.route('/all/:userId')
     .get(RecipeControllers.findAll)
+
+router.route('/:id')
+    .post(RecipeControllers.create)
+    .get(RecipeControllers.findById)
+    .put(RecipeControllers.update)
+
+router.route('delete/:id/:categoryId')
+
+    
+
+
+
+
 
 
 
