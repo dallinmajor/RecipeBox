@@ -6,7 +6,7 @@ const UserController = require('../../controllers/userController');
 router.route('/')
     .post(UserController.create)
 
-router.route('/all/:userId')
+router.route('/all')
     .get(UserController.findAll)
 
 router.route('/:id')
