@@ -2,7 +2,7 @@ const db = require('../models');
 
 module.exports = {
     findAll: (req, res) => {
-        db.User
+        db.Category
             .findById(req.params.userId, 'recipes')
             .populate('Recipe')
             .then(recipes => res.json(recipes))
@@ -22,6 +22,7 @@ module.exports = {
                 .findByIdAndUpdate(req.params.categoryId, {
                     $push: { recipes: recipe._id}
                 })
+                .then(res.json(recipe));
             })
             .catch(err => res.status(402).json(err));
     },

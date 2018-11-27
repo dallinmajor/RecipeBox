@@ -6,7 +6,7 @@ module.exports = {
             .findById(req.params.userId, 'categories')
             .populate('Category')
             .then(categories => res.json(categories))
-            .catch(err = res.status(402).json(err));
+            .catch(err = res.json(err));
     },
 
     findById: (req, res) => {
