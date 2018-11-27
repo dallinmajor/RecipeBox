@@ -11,7 +11,8 @@ router.route('/:id')
     .get(RecipeControllers.findById)
     .put(RecipeControllers.update)
 
-router.route('delete/:id/:categoryId')
+router.route('/delete/:id/:categoryId')
+    .delete(RecipeControllers.remove)
 
     
 

@@ -34,8 +34,9 @@ module.exports = {
 
     },
     remove: (req, res) => {
+        console.log(`deleting ${req.params.id}`)
         db.User
-            .findByIdAndRemove(req.params.id)
+            .findByIdAndDelete(req.params.id)
             .then(dbModel => dbModel.remove())
             .then(res.send('Deleted!'))
             .catch(err => res.status(402).json(err));

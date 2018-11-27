@@ -35,7 +35,7 @@ module.exports = {
     },
     remove: (req, res) => {
         db.Category
-            .findByIdAndRemove(req.params.id)
+            .findByIdAndDelete(req.params.id)
             .then(dbModel => dbModel.remove())
             .then(
                 db.User
