@@ -2,12 +2,11 @@ const router = require('express').Router();
 const CategoryControllers = require('../../controllers/categoryController');
 
 // ROUTE /api/category...
+router.route('/:userId')
+    .post(CategoryControllers.create)
 
 router.route('/all/:userId')
     .get(CategoryControllers.findAll)
-
-router.route('/:userId')
-    .post(CategoryControllers.create)
 
 router.route('/:id')
     .get(CategoryControllers.findById)
